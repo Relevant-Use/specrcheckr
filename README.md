@@ -166,6 +166,23 @@ commands.
 
 specrcheckr is zero-dependency — just Node.js 18+.
 
+### Install
+
+```bash
+# from npm (recommended once published)
+npm install -D specrcheckr
+npx specrcheckr init
+
+# or with no install at all
+npx specrcheckr@latest init
+```
+
+Prefer not to use npm? Vendor it instead: copy this repo's `bin/`, `scripts/`,
+and `schemas/` folders into your project and run
+`node path/to/bin/specrcheckr.mjs <command>`.
+
+### Commands
+
 | Command | What it does |
 |---|---|
 | `specrcheckr init` | Scaffold a config + starter feature tree |
