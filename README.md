@@ -17,6 +17,10 @@ It is built to be **driven by an AI assistant** — you mostly point your AI at
 this repo and answer a few questions. A manual setup path exists too
 (see [`MANUAL-SETUP.md`](./MANUAL-SETUP.md)).
 
+![specrcheckr review workbench — a feature tree on the left, a plain-English before/after and grouped review flags on the right](docs/screenshot.png)
+
+<sub>The screenshot above is the included synthetic example (`npm run example`) — no real product data.</sub>
+
 ---
 
 ## 🟢 Start here — point your AI at this repo
