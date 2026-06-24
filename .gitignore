@@ -1,0 +1,9 @@
+# specrcheckr output (the generated review packet is disposable / per-branch)
+.spec-review/
+
+# dependencies (specrcheckr itself has none, but consumer repos may)
+node_modules/
+
+# os / editor cruft
+.DS_Store
+*.log

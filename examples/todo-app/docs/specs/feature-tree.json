@@ -1,0 +1,138 @@
+{
+  "version": "1",
+  "updated": "after-change",
+  "root": {
+    "id": "tasks_app",
+    "label": "Tasks",
+    "description": "A small example to-do application used to demonstrate specrcheckr. Everything below is synthetic.",
+    "status": "implemented",
+    "children": [
+      {
+        "id": "accounts",
+        "label": "Accounts",
+        "description": "User accounts and authentication.",
+        "status": "implemented",
+        "security": true,
+        "children": [
+          {
+            "id": "accounts.signup",
+            "label": "Sign up",
+            "description": "Create an account with an email address and a password.",
+            "status": "implemented",
+            "source": ["src/auth/signup.ts"],
+            "tests": ["src/auth/signup.test.ts"]
+          },
+          {
+            "id": "accounts.login",
+            "label": "Log in",
+            "description": "Email and password login, now with optional two-factor authentication (TOTP) via an authenticator app. Users can enroll a device under Settings; once enrolled, login requires a 6-digit code after the password step.",
+            "status": "implemented",
+            "security": true,
+            "source": ["src/auth/login.ts"],
+            "tests": ["src/auth/login.test.ts"]
+          },
+          {
+            "id": "accounts.reset",
+            "label": "Password reset",
+            "description": "Request a reset email and set a new password from a single-use link that expires after one hour.",
+            "status": "implemented",
+            "security": true,
+            "source": ["src/auth/reset.ts"]
+          }
+        ]
+      },
+      {
+        "id": "lists",
+        "label": "Lists",
+        "description": "Group tasks into named lists.",
+        "status": "implemented",
+        "children": [
+          {
+            "id": "lists.create",
+            "label": "Create list",
+            "description": "Create a new named list.",
+            "status": "implemented",
+            "source": ["src/lists/create.ts"]
+          },
+          {
+            "id": "lists.rename",
+            "label": "Rename list",
+            "description": "Rename an existing list.",
+            "status": "implemented",
+            "source": ["src/lists/rename.ts"]
+          },
+          {
+            "id": "lists.delete",
+            "label": "Delete list",
+            "description": "Delete a list and all of the tasks inside it.",
+            "status": "implemented",
+            "source": ["src/lists/delete.ts"]
+          }
+        ]
+      },
+      {
+        "id": "tasks",
+        "label": "Tasks",
+        "description": "Create and manage tasks within a list.",
+        "status": "implemented",
+        "children": [
+          {
+            "id": "tasks.add",
+            "label": "Add task",
+            "description": "Add a task with a title to a list.",
+            "status": "implemented",
+            "source": ["src/tasks/add.ts"],
+            "tests": ["src/tasks/add.test.ts"]
+          },
+          {
+            "id": "tasks.complete",
+            "label": "Complete task",
+            "description": "Mark a task as done; completed tasks move to a separate completed section.",
+            "status": "implemented",
+            "source": ["src/tasks/complete.ts"]
+          },
+          {
+            "id": "tasks.due",
+            "label": "Due dates",
+            "description": "Set an optional due date on a task.",
+            "status": "implemented",
+            "source": ["src/tasks/due.ts"],
+            "children": [
+              {
+                "id": "tasks.due.reminders",
+                "label": "Reminders",
+                "description": "Reminders send an email one hour before a task is due. Exact delivery timing and per-user timezone handling still need product confirmation.",
+                "status": "needs_confirmation",
+                "source": ["src/tasks/reminders.ts"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sharing",
+        "label": "Sharing",
+        "description": "Share lists with other people.",
+        "status": "implemented",
+        "children": [
+          {
+            "id": "sharing.invite",
+            "label": "Invite a collaborator",
+            "description": "Invite a registered user by email to collaborate on a list with edit access.",
+            "status": "implemented",
+            "security": true,
+            "source": ["src/sharing/invite.ts"]
+          },
+          {
+            "id": "sharing.public_link",
+            "label": "Public share link",
+            "description": "A read-only public link to a list. The link can be created and shared, but it cannot yet be revoked or set to expire.",
+            "status": "known_incomplete",
+            "security": true,
+            "source": ["src/sharing/public-link.ts"]
+          }
+        ]
+      }
+    ]
+  }
+}

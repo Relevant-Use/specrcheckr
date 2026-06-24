@@ -1,0 +1,34 @@
+{
+  "productName": "My Product",
+
+  "featureTree": "docs/specs/feature-tree.json",
+
+  "baseRef": "origin/main",
+  "baseTree": null,
+
+  "behaviorGlobs": [
+    "src/**",
+    "app/**",
+    "lib/**",
+    "components/**",
+    "pages/**",
+    "server/**",
+    "migrations/**",
+    "**/*.sql"
+  ],
+
+  "specGlobs": [
+    "docs/specs/**"
+  ],
+
+  "securityGlobs": [
+    "**/auth/**",
+    "**/*rls*",
+    "**/middleware.*",
+    "migrations/**"
+  ],
+
+  "outputDir": ".spec-review",
+
+  "denylist": []
+}

@@ -1,0 +1,41 @@
+{
+  "name": "specrcheckr",
+  "version": "0.1.0",
+  "description": "An AI-operable, spec-first change-approval gate: a human-readable review workbench generated from your feature tree.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "specrcheckr": "bin/specrcheckr.mjs"
+  },
+  "scripts": {
+    "review": "node bin/specrcheckr.mjs review",
+    "serve": "node bin/specrcheckr.mjs serve",
+    "check": "node bin/specrcheckr.mjs check",
+    "validate": "node bin/specrcheckr.mjs validate",
+    "scan": "node bin/specrcheckr.mjs scan",
+    "example": "node bin/specrcheckr.mjs review --config examples/todo-app/specrcheckr.config.json",
+    "example:serve": "node bin/specrcheckr.mjs serve --config examples/todo-app/specrcheckr.config.json"
+  },
+  "files": [
+    "bin",
+    "scripts",
+    "schemas",
+    "specrcheckr.config.example.json"
+  ],
+  "keywords": [
+    "spec-first",
+    "code-review",
+    "approval-gate",
+    "feature-tree",
+    "ai-agents",
+    "change-management"
+  ],
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Relevant-Use/specrcheckr.git"
+  }
+}

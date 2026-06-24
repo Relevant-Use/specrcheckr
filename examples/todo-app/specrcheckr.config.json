@@ -1,0 +1,15 @@
+{
+  "productName": "Tasks (example app)",
+
+  "featureTree": "docs/specs/feature-tree.json",
+
+  "baseRef": null,
+  "baseTree": "docs/specs/feature-tree.base.json",
+
+  "behaviorGlobs": ["src/**"],
+  "specGlobs": ["docs/specs/**"],
+  "securityGlobs": ["src/auth/**"],
+
+  "outputDir": ".spec-review",
+  "denylist": []
+}

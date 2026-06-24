@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Relevant-Use/specrcheckr/schemas/feature-tree.schema.json",
+  "title": "specrcheckr feature tree",
+  "description": "The canonical, hand-maintained map of what your product does. specrcheckr maps your code changes onto this tree to produce a human-readable review.",
+  "type": "object",
+  "required": ["root"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Optional schema/version marker for your own tracking."
+    },
+    "updated": {
+      "type": "string",
+      "description": "Optional free-text 'last updated' marker."
+    },
+    "root": {
+      "$ref": "#/$defs/node",
+      "description": "The single top-level feature node. Everything nests under it."
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "label", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable, unique id for this feature node. NEVER reuse or renumber — comments and approvals are tied to it. Convention: dotted path, e.g. 'auth.login'.",
+          "pattern": "^[a-zA-Z0-9_.-]+$"
+        },
+        "label": {
+          "type": "string",
+          "description": "Short human name shown in the tree, e.g. 'Log in'."
+        },
+        "description": {
+          "type": "string",
+          "description": "Plain-English description of what this feature does TODAY. specrcheckr shows a short summary of this in the main panel and the full text under Evidence. When behavior changes, you edit this text and the tool shows the before/after."
+        },
+        "status": {
+          "type": "string",
+          "description": "Where this feature stands. Drives status badges and some review flags.",
+          "enum": [
+            "planned",
+            "in_progress",
+            "implemented",
+            "observed",
+            "needs_confirmation",
+            "known_incomplete",
+            "known_divergence"
+          ]
+        },
+        "security": {
+          "type": "boolean",
+          "description": "Set true if this feature touches auth, permissions, data access, or anything security-sensitive. Raises an 'Access / security' review flag so changes get extra scrutiny."
+        },
+        "source": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Implementation file paths that make up this feature. specrcheckr uses these to map a code change to this node. Keep them accurate — this mapping is how the tool knows which feature your diff touched."
+        },
+        "tests": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Test file paths covering this feature. A changed feature with no referenced tests raises an 'Evidence gap' flag."
+        },
+        "docs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Doc paths (specs, runbooks) relevant to this feature, shown as evidence links."
+        },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node" },
+          "description": "Sub-features nested under this node."
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
